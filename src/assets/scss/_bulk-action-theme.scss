@@ -1,0 +1,31 @@
+.vid-bulk-action {
+  @apply space-x-2;
+
+  &--processing {
+    //
+  }
+
+  &--disabled {
+    @apply opacity-75;
+  }
+
+  &__select {
+    //
+
+    &--disabled {
+      //
+    }
+  }
+
+  &__btn {
+    @apply rounded;
+
+    &--disabled {
+     //
+    }
+
+    &--empty {
+      @apply opacity-75;
+    }
+  }
+}

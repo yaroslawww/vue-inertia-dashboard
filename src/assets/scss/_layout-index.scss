@@ -1,0 +1,27 @@
+.vid-layout-index {
+  &__body {
+    @apply flex flex-wrap -mx-2 mb-4;
+  }
+
+  &__bulk-action {
+    //
+  }
+
+  &__search-form {
+    @apply px-2 w-full order-first mb-2 sm:w-auto sm:order-none sm:mb-0;
+    &-input {
+      //
+    }
+  }
+
+  &__actions {
+    @apply px-2 ml-auto;
+    &-btn {
+      //
+    }
+
+    &-icon {
+      //
+    }
+  }
+}

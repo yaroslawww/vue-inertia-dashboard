@@ -1,0 +1,10 @@
+.vid-list-tiles {
+  @apply flex flex-wrap;
+
+  &-empty {
+    @apply flex justify-center items-center;
+    &__text {
+      //
+    }
+  }
+}

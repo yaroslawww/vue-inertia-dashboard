@@ -1,0 +1,10 @@
+.vid-list-tiles {
+  @apply -mx-4;
+
+  &-empty {
+    @apply p-8;
+    &__text {
+      @apply text-black font-medium text-lg;
+    }
+  }
+}

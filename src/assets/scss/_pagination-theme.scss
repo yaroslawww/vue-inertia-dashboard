@@ -1,0 +1,108 @@
+.vid-pagination {
+  //
+  &__button-animation {
+    @apply ease-in-out duration-500;
+  }
+
+  &__button-style {
+    @apply font-medium bg-white text-sm leading-5 border border-gray;
+  }
+
+  &__button-icon-space {
+    @apply px-2 py-2 -ml-px ;
+  }
+
+  &__button-space {
+    @apply px-4 py-2 -ml-px;
+  }
+
+  &--desktop {
+    //
+
+    &__icon {
+      @apply w-4 h-4;
+    }
+
+    &__prev {
+      @extend .vid-pagination__button-animation;
+      @extend .vid-pagination__button-style;
+      @extend .vid-pagination__button-space;
+      @apply rounded-md hover:bg-gray focus:bg-gray active:bg-gray;
+      &-disabled {
+        @extend .vid-pagination__button-style;
+        @extend .vid-pagination__button-space;
+        @apply duration-500 text-gray rounded-md;
+      }
+    }
+
+    &__next {
+      @extend .vid-pagination__button-animation;
+      @extend .vid-pagination__button-style;
+      @extend .vid-pagination__button-space;
+      @apply ml-3 rounded-md hover:bg-gray focus:bg-gray active:bg-gray;
+      &-disabled {
+        @extend .vid-pagination__button-style;
+        @extend .vid-pagination__button-space;
+        @apply duration-500 ml-3 text-gray rounded-md;
+      }
+    }
+  }
+
+  &--mobile {
+    //
+
+    &__text {
+      @apply text-sm leading-5 font-medium;
+    }
+
+    &__actions {
+      @apply shadow-sm rounded-md;
+    }
+
+    &__icon {
+      @apply w-5 h-5;
+    }
+
+    &__prev {
+      @extend .vid-pagination__button-animation;
+      @extend .vid-pagination__button-style;
+      @extend .vid-pagination__button-icon-space;
+      @apply rounded-l-md hover:bg-gray focus:bg-gray active:bg-gray;
+      &-disabled {
+        @extend .vid-pagination__button-style;
+        @extend .vid-pagination__button-icon-space;
+        @apply text-gray rounded-l-md;
+      }
+    }
+
+    &__next {
+      @extend .vid-pagination__button-animation;
+      @extend .vid-pagination__button-style;
+      @extend .vid-pagination__button-icon-space;
+      @apply rounded-r-md hover:bg-gray focus:bg-gray active:bg-gray;
+      &-disabled {
+        @extend .vid-pagination__button-style;
+        @extend .vid-pagination__button-icon-space;
+        @apply text-gray cursor-default rounded-r-md;
+      }
+    }
+
+    &__no-link {
+      @extend .vid-pagination__button-style;
+      @extend .vid-pagination__button-space;
+    }
+
+    &__link {
+      @extend .vid-pagination__button-animation;
+      @extend .vid-pagination__button-style;
+      @extend .vid-pagination__button-space;
+      @apply hover:bg-gray focus:bg-gray active:bg-gray;
+      &-active {
+        @extend .vid-pagination__button-style;
+        @extend .vid-pagination__button-style;
+        @extend .vid-pagination__button-space;
+        @apply text-black border-black;
+      }
+    }
+  }
+}

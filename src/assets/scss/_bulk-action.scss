@@ -1,0 +1,31 @@
+.vid-bulk-action {
+  @apply flex;
+
+  &--processing {
+    @apply pointer-events-none;
+  }
+
+  &--disabled {
+    @apply cursor-not-allowed;
+  }
+
+  &__select {
+    @apply w-full;
+
+    &--disabled {
+      @apply pointer-events-none;
+    }
+  }
+
+  &__btn {
+    //
+
+    &--disabled {
+      @apply pointer-events-none;
+    }
+
+    &--empty {
+      @apply cursor-not-allowed;
+    }
+  }
+}

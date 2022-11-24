@@ -1,0 +1,79 @@
+.vid-pagination {
+  @apply flex items-center justify-between;
+
+  &__button {
+    @apply cursor-pointer transition-all relative inline-flex items-center focus:outline-none;
+  }
+
+  &--desktop {
+    @apply flex justify-between flex-1 sm:hidden;
+
+    &__icon {
+      //
+    }
+
+    &__prev {
+      @extend .vid-pagination__button;
+      &-disabled {
+        @extend .vid-pagination__button;
+        @apply cursor-default;
+      }
+    }
+
+    &__next {
+      @extend .vid-pagination__button;
+      &-disabled {
+        @extend .vid-pagination__button;
+        @apply cursor-default;
+      }
+    }
+  }
+
+  &--mobile {
+    @apply hidden sm:flex-1 sm:flex sm:items-center sm:justify-between;
+
+    &__text {
+      //
+    }
+
+    &__actions {
+      @apply relative z-0 inline-flex;
+    }
+
+    &__icon {
+      //
+    }
+
+    &__prev {
+      @extend .vid-pagination__button;
+      @apply focus:z-10;
+      &-disabled {
+        @extend .vid-pagination__button;
+        @apply cursor-default;
+      }
+    }
+
+    &__next {
+      @extend .vid-pagination__button;
+      @apply focus:z-10;
+      &-disabled {
+        @extend .vid-pagination__button;
+        @apply cursor-default;
+      }
+    }
+
+    &__no-link {
+      @extend .vid-pagination__button;
+      @apply cursor-default;
+    }
+
+    &__link {
+      @extend .vid-pagination__button;
+      @apply focus:z-10;
+      &-active {
+        @extend .vid-pagination__button;
+        @apply cursor-default  z-10;
+      }
+    }
+  }
+}

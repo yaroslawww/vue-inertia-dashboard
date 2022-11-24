@@ -1,0 +1,27 @@
+.vid-layout-index {
+  &__body {
+    //
+  }
+
+  &__bulk-action {
+//
+  }
+
+  &__search-form {
+    //
+    &-input {
+      @apply w-full sm:w-52;
+    }
+  }
+
+  &__actions {
+    //
+    &-btn {
+      @apply w-4 h-4 md:mr-2;
+    }
+
+    &-icon {
+      @apply hidden md:inline;
+    }
+  }
+}

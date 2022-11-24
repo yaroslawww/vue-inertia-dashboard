@@ -1,0 +1,19 @@
+.vid-order-arrows {
+  @apply pr-2;
+
+  &__up {
+    @apply w-2 h-2 cursor-pointer;
+  }
+
+  &__down {
+    @apply w-2 h-2 transform rotate-180 cursor-pointer;
+  }
+
+  &__active {
+    @apply opacity-50 pointer-events-none;
+  }
+
+  &__separator {
+    @apply h-1;
+  }
+}

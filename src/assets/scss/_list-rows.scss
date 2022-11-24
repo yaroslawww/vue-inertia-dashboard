@@ -1,0 +1,96 @@
+.vid-list-rows {
+  @apply flex flex-col relative;
+
+  &__table-wrap {
+    &-l1 {
+      @apply -my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8;
+    }
+
+    &-l2 {
+      @apply inline-block min-w-full py-2 align-middle md:px-6 lg:px-8;
+    }
+
+    &-l3 {
+      @apply overflow-hidden shadow;
+    }
+  }
+
+  &__table {
+    @apply min-w-full;
+    &-head {
+      //
+      &-th {
+        @apply px-3 py-3 text-left text-xs font-medium tracking-wide;
+        &-all {
+          @apply w-4 px-3 py-3 text-left text-xs font-medium tracking-wide;
+        }
+
+        &__wrap {
+          @apply flex justify-start items-center;
+        }
+      }
+    }
+
+    &-body {
+      //
+      &-td {
+        @apply whitespace-nowrap px-3 py-4;
+        &-all {
+          @apply w-4 whitespace-nowrap px-3 py-4;
+        }
+
+        &-actions {
+          @apply w-4 whitespace-nowrap px-3 py-4;
+          &-btn {
+            //
+          }
+
+          &-icon {
+            //
+          }
+        }
+
+        &-action {
+          @apply whitespace-nowrap px-3 py-4;
+          &-btn {
+            @apply flex justify-end space-x-1;
+          }
+        }
+      }
+    }
+  }
+
+  &__menu {
+    @apply origin-top-right absolute right-4 mt-7 w-56 focus:outline-none;
+    &-enter-active-class {
+      @apply transition ease-out duration-100;
+    }
+
+    &-enter-from-class {
+      @apply transform opacity-0 scale-95;
+    }
+
+    &-enter-to-class {
+      @apply transform opacity-100 scale-100;
+    }
+
+    &-leave-active-class {
+      @apply transition ease-in duration-75;
+    }
+
+    &-leave-from-class {
+      @apply transform opacity-100 scale-100;
+    }
+
+    &-leave-to-class {
+      @apply transform opacity-0 scale-95;
+    }
+  }
+
+  &-empty {
+    @apply flex justify-center items-center;
+    &__text {
+      @apply text-black font-medium text-lg;
+    }
+  }
+}
