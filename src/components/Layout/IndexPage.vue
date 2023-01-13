@@ -36,6 +36,7 @@
           :loading="loading"
           :selected-objects="selectedObjects"
           :update-selected-objects="updateSelectedObjects"
+          :entities="entities"
           :url-params="urlParams"
           :fetch-data="fetchData"
         >
