@@ -24,6 +24,11 @@
                   </label>
                 </th>
                 <th
+                  scope="col"
+                >
+                  <!-- Actions column -->
+                </th>
+                <th
                   v-for="(column, columnKey) in columns"
                   :key="columnKey"
                   scope="col"
@@ -38,11 +43,6 @@
                     />
                     {{ column.title || '' }}
                   </div>
-                </th>
-                <th
-                  scope="col"
-                >
-                <!-- Actions column -->
                 </th>
               </tr>
             </thead>
@@ -65,17 +65,6 @@
                     <div class="control_indicator" />
                     <span class="">&nbsp;</span>
                   </label>
-                </td>
-                <td
-                  v-for="(column, columnKey) in columns"
-                  :key="columnKey"
-                  class="vid-list-rows__table-body-td"
-                >
-                  <component
-                    :is="column.component"
-                    :entity="entity"
-                    :column="column"
-                  />
                 </td>
                 <template v-if="actionsAsList">
                   <td
@@ -118,6 +107,17 @@
                     </div>
                   </td>
                 </template>
+                <td
+                  v-for="(column, columnKey) in columns"
+                  :key="columnKey"
+                  class="vid-list-rows__table-body-td"
+                >
+                  <component
+                    :is="column.component"
+                    :entity="entity"
+                    :column="column"
+                  />
+                </td>
               </tr>
             </tbody>
           </table>
