@@ -61,7 +61,7 @@
   }
 
   &__menu {
-    @apply origin-top-right absolute right-4 mt-7 w-56 focus:outline-none;
+    @apply origin-top-right absolute left-4 mt-7 w-56 focus:outline-none;
     &-enter-active-class {
       @apply transition ease-out duration-100;
     }
