@@ -4,10 +4,10 @@ const useLocale = () => {
   const t = (key, replaces = {}) => {
     const propsValue = usePage().props.value;
     // eslint-disable-next-line no-nested-ternary
-    let translation = (propsValue.translations && propsValue.translations[key])
+    let translation = (propsValue && propsValue.translations && propsValue.translations[key])
       ? propsValue.translations[key]
       : (
-        (propsValue.translationsGlobal && propsValue.translationsGlobal[key])
+        (propsValue && propsValue.translationsGlobal && propsValue.translationsGlobal[key])
           ? propsValue.translationsGlobal[key]
           : key
       );

@@ -95,7 +95,7 @@
 
 <script>
 import {
-  computed, ref, onBeforeUnmount, onMounted,
+  computed, ref, onBeforeUnmount, onMounted, inject,
 } from 'vue';
 import { isObject } from 'lodash';
 import { usePage } from '@inertiajs/inertia-vue3';
@@ -122,8 +122,9 @@ export default {
       default: true,
     },
   },
-  setup(props) {
+  setup(props, {emit}) {
     const { t } = useLocale();
+    const portalApp = inject('PortalApp') || window.PortalApp;
     let entityType = ref('');
     let entities = ref({});
     let columns = ref([]);
@@ -148,7 +149,7 @@ export default {
 
     const ajaxRequest = () => {
       loading.value = true;
-      window.PortalApp.request()
+      portalApp.request()
         .get(props.indexUrl, {
           params: Object.fromEntries(urlParams.value),
         })
@@ -164,7 +165,7 @@ export default {
             }
           }
         })
-        .catch((e) => window.PortalApp.onResponseError(e))
+        .catch((e) => portalApp.onResponseError(e))
         .finally(() => {
           loading.value = false;
         });
@@ -210,12 +211,13 @@ export default {
       }
     };
 
+
     onMounted(() => {
-      window.PortalApp.$on('refresh-dashboard-index', refreshDashboardIndex);
+      portalApp.$on('refresh-dashboard-index', refreshDashboardIndex);
     });
 
     onBeforeUnmount(() => {
-      window.PortalApp.$off('refresh-dashboard-index', refreshDashboardIndex);
+      portalApp.$off('refresh-dashboard-index', refreshDashboardIndex);
     });
 
     return {
@@ -240,6 +242,7 @@ export default {
         fetchData();
       },
       bulkActionExecuted: (action) => {
+        emit('bulk-action-executed', {action, entities: selectedObjects.value});
         if (action.onExecute) {
           // eslint-disable-next-line default-case
           switch (action.onExecute) {

@@ -1,4 +1,4 @@
-import { reactive } from 'vue';
+import {inject, reactive} from 'vue';
 import { Inertia } from '@inertiajs/inertia';
 import useLocale from './useLocale';
 
@@ -9,10 +9,19 @@ export default function useAction(action, entityType, selectedObjects, options =
     processing: false,
 
     execute() {
+      const portalApp = inject('PortalApp') || window.PortalApp;
       switch (action.type) {
+        case 'custom':
+          if (options.onSuccess) {
+            options.onSuccess();
+          } else {
+            Inertia.reload();
+          }
+          break;
+        case 'request':
         default:
           this.processing = true;
-          window.PortalApp.request()
+          portalApp.request()
             .post(
               (action.url || `/action/${action.name}`),
               Object.assign(
@@ -28,19 +37,19 @@ export default function useAction(action, entityType, selectedObjects, options =
                 const responseData = response.data.data;
                 switch (responseData.type) {
                   case 'success':
-                    PortalApp.success(responseData.message || t('Action executed with status "success"'));
+                    portalApp.success(responseData.message || t('Action executed with status "success"'));
                     break;
                   case 'warning':
-                    PortalApp.warning(responseData.message || t('Action executed with status "warning"'));
+                    portalApp.warning(responseData.message || t('Action executed with status "warning"'));
                     break;
                   case 'error':
-                    PortalApp.error(responseData.message || t('Action executed with status "error"'));
+                    portalApp.error(responseData.message || t('Action executed with status "error"'));
                     break;
                   case 'info':
-                    PortalApp.info(responseData.message || t('Action executed with status "info"'));
+                    portalApp.info(responseData.message || t('Action executed with status "info"'));
                     break;
                   case 'download':
-                    PortalApp.info(t('Downloading'));
+                    portalApp.info(t('Downloading'));
                     setTimeout(() => {
                       const link = document.createElement('a');
                       link.href = responseData.url;
@@ -51,7 +60,7 @@ export default function useAction(action, entityType, selectedObjects, options =
                     }, 0);
                     break;
                   default:
-                    PortalApp.warning(t('Action executed, without result status'));
+                    portalApp.warning(t('Action executed, without result status'));
                     break;
                 }
 
@@ -62,9 +71,9 @@ export default function useAction(action, entityType, selectedObjects, options =
                 }
               }
             })
-            .catch((e) => PortalApp.onResponseError(e))
+            .catch((e) => portalApp.onResponseError(e))
             .finally(() => {
-              PortalApp.progressDone();
+              portalApp.progressDone();
               this.processing = false;
             });
           break;
