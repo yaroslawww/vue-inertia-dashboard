@@ -1,6 +1,6 @@
 {
     "name": "vue-inertia-dashboard",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "license": "MIT",
     "type": "module",
     "keywords":[
@@ -31,7 +31,7 @@
         "dev": "vite",
         "build:dashboard": "LIB_NAME=dashboard vite build",
         "build:lib": "LIB_NAME=lib vite build",
-        "build": "npm run build:dashboard && npm run build:lib",
+        "build": "rm -rf ./dist && npm run build:dashboard && npm run build:lib",
         "preview": "vite preview"
     },
     "dependencies": {

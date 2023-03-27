@@ -33,6 +33,15 @@
 
     &-body {
       @apply divide-y divide-gray bg-white text-sm;
+      &-tr {
+        &--clickable {
+          @apply cursor-pointer;
+          @apply transition-all duration-500;
+          &:hover {
+            // @apply bg-gray;
+          }
+        }
+      }
       &-td {
         //
         &-all {

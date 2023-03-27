@@ -50,9 +50,12 @@
               <tr
                 v-for="entity in entities.data"
                 :key="entity.id"
+                :class="['vid-list-rows__table-body-tr', rowClickable?'vid-list-rows__table-body-tr--clickable':'', rowClass]"
+                @click="rowClickable ? $emit('row-click', entity) : null"
               >
                 <td
                   v-if="selectable"
+                  @click.stop
                   class="vid-list-rows__table-body-td-all"
                 >
                   <label class="control control-checkbox relative">
@@ -102,6 +105,7 @@
                         :entity="entity"
                         :action="action"
                         format="icon"
+                        @click.stop
                         @executed="onActionExecuted(entity, $event)"
                       />
                     </div>
@@ -134,6 +138,7 @@
         leave-to-class="vid-list-rows__menu-leave-to-class"
       >
         <div
+          @click.stop
           v-if="contextMenu.entity?._actions?.length"
           v-click-outside="closeContextMenu"
           class="vid-list-rows__menu"
@@ -211,8 +216,16 @@ export default {
       type: URLSearchParams,
       default: null,
     },
+    rowClickable: {
+      type: Boolean,
+      default: true,
+    },
+    rowClass: {
+      type: [String, Array, Object],
+      default: null,
+    },
   },
-  emits: ['select-entity', 'row-action-executed', 'order-changed'],
+  emits: ['row-click', 'select-entity', 'row-action-executed', 'order-changed'],
   setup(props, { emit }) {
     const { t } = useLocale();
     const contextMenu = ref({});
