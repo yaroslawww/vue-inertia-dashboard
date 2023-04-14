@@ -185,13 +185,12 @@ export default {
     if (props.indexUrl) {
       fetchData();
     } else {
-      const pageProps = usePage().props.value;
-      entityType = computed(() => pageProps[props.indexKey].entityType);
-      entities = computed(() => pageProps[props.indexKey].entities);
-      columns = computed(() => pageProps[props.indexKey].columns);
-      links = computed(() => pageProps[props.indexKey].links);
-      bulkActions = computed(() => pageProps[props.indexKey]?.bulkActions);
-      urlParams.value = new URLSearchParams(pageProps[props.indexKey]?.filtration);
+      entityType = computed(() => usePage().props.value[props.indexKey].entityType);
+      entities = computed(() => usePage().props.value[props.indexKey].entities);
+      columns = computed(() => usePage().props.value[props.indexKey].columns);
+      links = computed(() => usePage().props.value[props.indexKey].links);
+      bulkActions = computed(() => usePage().props.value[props.indexKey]?.bulkActions);
+      urlParams.value = new URLSearchParams(usePage().props.value[props.indexKey]?.filtration);
     }
 
     const searchText = ref(urlParams.value.get('search'));
