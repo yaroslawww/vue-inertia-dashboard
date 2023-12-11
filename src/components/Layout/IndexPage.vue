@@ -24,6 +24,7 @@
       </div>
       <div class="vid-layout-index__search-form">
         <component
+          v-if="!hideSearch"
           :is="`${$vueInertiaDashboardConfigs.componentPrefix}BlockSearchForm`"
           v-model="searchText"
           class="vid-layout-index__search-form-input"
@@ -120,6 +121,10 @@ export default {
     clearSelectedOnRequest: {
       type: Boolean,
       default: true,
+    },
+    hideSearch: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props, {emit}) {
