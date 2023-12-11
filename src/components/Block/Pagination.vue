@@ -1,5 +1,6 @@
 <template>
   <nav
+    v-if="meta?.current_page"
     role="navigation"
     class="vid-pagination"
   >
